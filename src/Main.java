@@ -4,6 +4,7 @@ public class Main{
     void main() {
 
         Scanner scanner = new Scanner(System.in);
+
         Registration registration = new Registration();
 
         String username;
@@ -42,7 +43,7 @@ public class Main{
         // Create Login object and pass all 5 values to construct
         Login user = new Login(username, password, cellphone, firstName, lastName);
 
-        //methods from login.java
+        //methods form login.java
         String registrationMessage = user.registerUser();
         System.out.println(registrationMessage);
 
@@ -86,6 +87,7 @@ public class Main{
                     input.nextLine();
 
                     for (int i = 0; i < totalMessages; i++){
+
                         System.out.println("\nMessage " + i + 1);
 
                         System.out.println("Enter recipient number: ");
@@ -103,6 +105,7 @@ public class Main{
                                 && msg.checkMessageLength().contains("ready")){
 
                             System.out.println("Message Hash: " + msg.createMessageHash());
+
                             System.out.println("\nChoose: ");
                             System.out.println("1) Send Message");
                             System.out.println("2) Disregard Message");
@@ -116,78 +119,21 @@ public class Main{
                     }
                     System.out.println("\nTotal messages sent: "
                                + Message.returnTotalMessages());
+
                     break;
 
                 case 2:
-                    System.out.println("\nRecently sent messages: ");
-                    if (Message.getSentMessages().isEmpty()) {
-                        System.out.println("No messages sent yet.");
-                    } else {
-                        for (String m : Message.getSentMessages()){
-                            System.out.println("- " + m);
-                        }
-                    }
+                    System.out.println("Coming Soon");
                     break;
 
                 case 3:
-                    // Stored Messages sub menu
-                    String sub;
-                    do {
-                        System.out.println("\n---Stored Messages---");
-                        System.out.println("a. Display sender and recipient of all stored messages");
-                        System.out.println("b. Display the longest stored message");
-                        System.out.println("c. Search for a message by ID");
-                        System.out.println("d. Search messages by recipient");
-                        System.out.println("e. Delete a message by hash");
-                        System.out.println("f. Display a full report");
-                        System.out.println("0. Back to main menu");
-
-                        sub = scanner.nextLine().trim().toLowerCase();
-
-                        switch (sub) {
-                            case "a":
-                                System.out.println(Message.displayStoredSendersAndRecipients());
-                                break;
-                            case "b":
-                                System.out.println(Message.displayLongestMessage());
-                                break;
-                            case "c":
-                                System.out.println("Enter message ID: ");
-                                String id = scanner.nextLine();
-                                System.out.println(Message.searchByMessageID(id));
-                                break;
-                            case "d":
-                                System.out.println("Enter recipient number: ");
-                                String recipient = scanner.nextLine();
-                                System.out.println(Message.searchByRecipient(recipient));
-                                break;
-                            case "e":
-                                System.out.println("Enter message hash: ");
-                                String hash = scanner.nextLine();
-                                System.out.println(Message.deleteMessageByHash(hash));
-                                break;
-                            case "f":
-                                System.out.println(Message.displayReport());
-                                break;
-                            case "0":
-                                break;
-                            default:
-                                System.out.println("Invalid option.");
-                        }
-                    } while (sub.equals(0));
-                    break;
-
-                case 4:
                     System.out.println("Goodbye!");
                     break;
 
                 default:
                     System.out.println("Invalid option");
             }
-
-        } while (choice != 4);
-
-      scanner.close();
+        } while (choice != 3);
 
     }
         }
